@@ -1,0 +1,134 @@
+﻿<Window x:Class="SweetControl_2._0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SweetControl_2._0"
+        mc:Ignorable="d"
+        Title="SweetControl_2.0" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FFF77B9D"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Foreground" Value="Bisque"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <!--Изменение цвета текста-->
+                    <Setter Property="Foreground" Value="#8d6c9f" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Name="MainGrid" Background="#FDAEC4">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"
+              Grid.Row="1"
+              Grid.ColumnSpan="3"
+              Background="#FFF77B9D">
+            
+            <!--грид для покраски всей полосы для кнопок-->
+            
+        </Grid>
+
+        <Grid Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Grid.Row="3"
+              Grid.RowSpan="2">
+            
+            <local:Graphic/>
+            
+        </Grid>
+
+        <Border Name="MoveBorder"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    Background="#FDAEC4"/> 
+
+        <StackPanel Grid.Column="0"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+            
+            <!--Стак панель для будущих кнопок-->
+
+            <Button Name="ButtonGrid"
+                    Content="Таблица"
+                    FontSize="20"
+                    Width="150" 
+                    FontWeight="Bold" 
+                    BorderThickness="0" 
+                    MouseEnter="ButtonGrid_MouseEnter" 
+                    MouseLeave="ButtonGrid_MouseLeave">
+
+                 
+
+            </Button>
+            
+            <Button Name="ButtonGraphic"
+                    Content="График"
+                    FontSize="20"
+                    Width="150" 
+                    FontWeight="Bold" 
+                    BorderThickness="0" 
+                    MouseEnter="ButtonGraphic_MouseEnter" 
+                    MouseLeave="ButtonGraphic_MouseLeave" >
+                
+                
+                
+            </Button>
+
+        </StackPanel>
+
+        <Button Name="ButtonExit"
+                Width="100"
+                Height="100"
+                Grid.Column="3"
+                Grid.Row="0"
+                Grid.RowSpan="3" 
+                Click="ButtonExit_Click">
+
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Ellipse StrokeThickness="8" Stroke="#8d6c9f" Fill="Bisque"/>
+                        <Image Name="ExitImage" Height="64" Width="64" Source="Resources/ico1.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="ExitImage" Property="Source" Value="Resources/ico2.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+
+    </Grid>
+    
+</Window>
