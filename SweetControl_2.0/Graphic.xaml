@@ -13,11 +13,15 @@
         <Canvas x:Name="GraphicCanvas" 
             HorizontalAlignment="Left"
             Width="500"
-            Height="200"
+            Height="250"
             Margin="50,50,50,50"
             VerticalAlignment="Top"
-            Background="Bisque"/>
-        
+            Background="Bisque">
+            <Canvas.LayoutTransform>
+                <ScaleTransform ScaleX="1" ScaleY="-1" CenterX=".5" CenterY=".5" />
+            </Canvas.LayoutTransform>
+        </Canvas>
+
     </Grid>
     
 </UserControl>

@@ -32,7 +32,7 @@ namespace SweetControl_2._0
             Application.Current.Shutdown();
         }
 
-        // выбранный элемент дополяется сердечком (Хотелось бы отметить что это тоже не самое лучшее решение, но я только осваиваюсь в WPF) <3
+        // выбранный элемент дополняется сердечком (Хотелось бы отметить что это тоже не самое лучшее решение, но я только осваиваюсь в WPF) <3
 
         private void ButtonGrid_MouseEnter(object sender, MouseEventArgs e)
         {
