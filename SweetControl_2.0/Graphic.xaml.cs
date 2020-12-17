@@ -91,6 +91,11 @@ namespace SweetControl_2._0
 
             painter = new GraphicPainter(GraphicCanvas, PointList);
             painter.PaintGraphic();
+
+            JsonFileWorker myJson = new JsonFileWorker();
+            //myJson.WriteToFile();
+            myJson.ReadingFromFile();
+            //MessageBox.Show($"{JsonFileWorker.json}\n{JsonFileWorker.restoreRes.Resultation}");
         }
 
         public class GraphicPainter
