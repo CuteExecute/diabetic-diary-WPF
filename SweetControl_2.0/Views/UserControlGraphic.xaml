@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="SweetControl_2._0.Views.UserControlGraphic"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SweetControl_2._0.Views"
+             xmlns:vm="clr-namespace:SweetControl_2._0.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:GraphicViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.8*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <SolidColorBrush Opacity="0.0" Color="#FDAEC4"/>
+        </Grid.Background>
+
+        <Canvas x:Name="GraphicCanvas" 
+            Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Width="430"
+            Height="310"
+            Margin="0,0,0,0"
+            Background="#fed7e2"
+            Opacity="0.8">
+            <Canvas.LayoutTransform>
+                <ScaleTransform ScaleX="1" ScaleY="-1" CenterX=".5" CenterY=".5" />
+            </Canvas.LayoutTransform>
+        </Canvas>
+
+        <!--<Button Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="100" Height="50" 
+                Content="Update" Command="{Binding Update}" />-->
+
+        <ListBox x:Name="GraphicListBox"
+                 Grid.Column="1" 
+                 ItemsSource="{Binding Days, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 SelectedItem="{Binding SelectedDay}" 
+                 BorderThickness="0,0,0,1" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                 ScrollViewer.CanContentScroll="True" 
+                 HorizontalContentAlignment="Right"
+                 Margin="0,5,0,0"
+                 >
+            <ListBox.Background>
+                <SolidColorBrush Opacity="0.0" Color="White"/>
+            </ListBox.Background>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Opacity="1" FontSize="18" Text="{Binding Date}" />
+                        <!--<TextBlock Text="{Binding Time}" />
+                        <TextBlock Text="{Binding Resultation}" />-->
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+    
+</UserControl>

@@ -4,9 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SweetControl_2._0"
+        xmlns:localView="clr-namespace:SweetControl_2._0.Views"
+        xmlns:vm="clr-namespace:SweetControl_2._0.ViewModels"
         mc:Ignorable="d"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com" 
         Title="SweetControl_2.0" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize">
 
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#FFF77B9D"/>
@@ -29,8 +36,15 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
 
-    <Grid Name="MainGrid" Background="#FDAEC4">
+    <Grid Name="MainGrid"><!--#FDAEC4-->
+
+        <Grid.Background>
+            <SolidColorBrush Opacity="1.0" Color="#FDAEC4"/>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"></RowDefinition>
@@ -44,7 +58,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
+        
         <Grid Grid.Column="0"
               Grid.Row="1"
               Grid.ColumnSpan="3"
@@ -55,19 +69,81 @@
         </Grid>
 
         <Grid Grid.Column="0"
+              Grid.Row="2"
+              Grid.ColumnSpan="3"
+              Grid.RowSpan="3"
+              Background="#FDAEC4">
+
+              <Image gif:ImageBehavior.RepeatBehavior="Forever"
+                     gif:ImageBehavior.AnimationSpeedRatio="1"
+                     gif:ImageBehavior.AnimatedSource="Resources\sakura.gif" 
+                     Stretch="UniformToFill" 
+                     Opacity="0.5"/>
+
+        </Grid>
+
+        <Grid Grid.Column="0"
               Grid.ColumnSpan="3"
               Grid.Row="3"
               Grid.RowSpan="2">
             
-            <local:Graphic/>
-            
+              <!--<local:Graphic/>-->
+              <!--<localView:UserControlGraphic/>-->
+             
+              <!--<ContentControl Content="{Binding CurrentControl, UpdateSourceTrigger=PropertyChanged}" />-->
+              <ContentControl Name="contentMain">
+                  <localView:UserControlResults/>
+              </ContentControl>
+
         </Grid>
 
         <Border Name="MoveBorder"
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Grid.Row="0"
-                    Background="#FDAEC4"/>
+                    Background="#FDAEC4">
+            <StatusBar Width="350" HorizontalAlignment="Left">
+
+                <StatusBar.Background>
+                    <SolidColorBrush Opacity="0.0" Color="White"/>
+                </StatusBar.Background>
+
+                <StatusBarItem>
+                    <TextBlock Name="Version"
+                       Text="v_alpha_1.0"
+                       FontSize="15"
+                       Width="auto" 
+                       Foreground="#FFF77B9D">
+                    </TextBlock>
+                </StatusBarItem>
+
+                <Separator Background="#FFF77B9D" />
+
+                <StatusBarItem>
+                    <TextBlock Name="MemoryText"
+                       Text="{Binding Memory}"
+                       Foreground="#FFF77B9D"
+                       FontSize="15"
+                       Width="auto" 
+                       >
+                    </TextBlock>
+                </StatusBarItem>
+
+                <Separator Background="#FFF77B9D" />
+
+                <StatusBarItem>
+                    <TextBlock Name="TestText"
+                       Text="{Binding Counter.Count}"
+                       Foreground="#FFF77B9D"
+                       FontSize="15"
+                       Width="auto" 
+                       >
+                    </TextBlock>
+                </StatusBarItem>
+                
+            </StatusBar>
+            
+        </Border>
 
         <StackPanel Grid.Column="0"
                     Grid.Row="1"
@@ -79,30 +155,33 @@
 
             <Button Name="ButtonGrid"
                     Content="Таблица"
+                    Command="{Binding ClickAdd}"
                     FontSize="20"
                     Width="150" 
                     FontWeight="Bold" 
                     BorderThickness="0" 
                     MouseEnter="ButtonGrid_MouseEnter" 
-                    MouseLeave="ButtonGrid_MouseLeave">
+                    MouseLeave="ButtonGrid_MouseLeave" Click="ButtonGrid_Click">
 
                  
 
             </Button>
-            
+
             <Button Name="ButtonGraphic"
                     Content="График"
+                    Command="{Binding ClickAdd}"
                     FontSize="20"
                     Width="150" 
                     FontWeight="Bold" 
                     BorderThickness="0" 
                     MouseEnter="ButtonGraphic_MouseEnter" 
-                    MouseLeave="ButtonGraphic_MouseLeave" >
-                
-                
-                
-            </Button>
+                    MouseLeave="ButtonGraphic_MouseLeave" Click="ButtonGraphic_Click" >
+                <!--Command="{Binding ClickAdd}"-->
 
+
+
+            </Button>
+            
         </StackPanel>
 
         <Button Name="ButtonExit"
@@ -130,5 +209,5 @@
         </Button>
 
     </Grid>
-    
+  
 </Window>

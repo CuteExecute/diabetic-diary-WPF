@@ -78,16 +78,29 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.0\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="IResult.cs" />
-    <Compile Include="JsonFileWorker.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="WrapperResult.cs" />
+    <Compile Include="Models\IResult.cs" />
+    <Compile Include="Models\Counter.cs" />
+    <Compile Include="Models\JsonFileWorker.cs" />
+    <Compile Include="Models\Result.cs" />
+    <Compile Include="ViewModels\DelegateCommand.cs" />
+    <Compile Include="ViewModels\GraphicViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ResultsViewModel.cs" />
+    <Compile Include="Views\UserControlGraphic.xaml.cs">
+      <DependentUpon>UserControlGraphic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControlResults.xaml.cs">
+      <DependentUpon>UserControlResults.xaml</DependentUpon>
+    </Compile>
     <Page Include="Graphic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +120,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\UserControlGraphic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControlResults.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -140,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ico2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sakura.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

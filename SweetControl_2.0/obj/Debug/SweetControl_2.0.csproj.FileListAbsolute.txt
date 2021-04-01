@@ -53,3 +53,10 @@ E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\bin\Debug\System.Text.Json
 E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\bin\Debug\System.ValueTuple.xml
 E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\obj\Debug\SweetControl_2.0.csproj.CopyComplete
+E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\obj\Debug\Views\UserControlResults.g.cs
+E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\obj\Debug\Views\UserControlResults.baml
+E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\obj\Debug\Views\UserControlGraphic.g.cs
+E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\obj\Debug\Views\UserControlGraphic.baml
+E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\bin\Debug\WpfAnimatedGif.dll
+E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\bin\Debug\WpfAnimatedGif.pdb
+E:\MyC#\Pet_project\SweetControl_2.0\SweetControl_2.0\bin\Debug\WpfAnimatedGif.xml

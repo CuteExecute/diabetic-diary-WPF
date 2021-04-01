@@ -93,8 +93,14 @@ namespace SweetControl_2._0
             painter.PaintGraphic();
 
             JsonFileWorker myJson = new JsonFileWorker();
-            //myJson.WriteToFile();
-            myJson.ReadingFromFile();
+
+            //myJson.RemoveFileLine("11.02.2021", "13:10", "1", "7.5");
+
+            //myJson.WriteToFile(10.9, 1);
+
+            //WrapperResult[] testRes = myJson.ReadingFromFile();
+            //MessageBox.Show($"{testRes[1].Resultation} - {testRes[1].Time}"); // OK B)
+
             //MessageBox.Show($"{JsonFileWorker.json}\n{JsonFileWorker.restoreRes.Resultation}");
         }
 
@@ -112,7 +118,7 @@ namespace SweetControl_2._0
             double scaleX { get; set; } 
             double scaleY { get; set; }
 
-            // конструктор
+            // ctor
             public GraphicPainter(Canvas GraphicCanvas, List<Point> points)
             {
                 this.GraphicCanvas = GraphicCanvas;
@@ -143,7 +149,7 @@ namespace SweetControl_2._0
                     CalculatingScaleNewPoint();
                 }
 
-                SolidColorBrush color = new SolidColorBrush(Color.FromRgb(141, 108, 159)); // статик лайн
+                SolidColorBrush color = new SolidColorBrush(Color.FromRgb(141, 108, 159)); // static line
                 var line = new Line
                 {
                     Stroke = color,

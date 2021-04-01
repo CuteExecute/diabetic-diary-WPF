@@ -8,9 +8,9 @@ namespace SweetControl_2._0
 {
     interface IResult
     {
-        string Day { get; set; }
+        string Date { get; set; }
         string Time { get; set; }
-        int CurrenеDayIndex { get; set; }
-        double Resultation { get; set; }
+        int CurrentDayIndex { get; set; }
+        decimal Resultation { get; set; }
     }
 }
