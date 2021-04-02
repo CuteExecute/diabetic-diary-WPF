@@ -58,14 +58,12 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <Grid Grid.Column="0"
               Grid.Row="1"
               Grid.ColumnSpan="3"
               Background="#FFF77B9D">
-            
-            <!--грид для покраски всей полосы для кнопок-->
-            
+
         </Grid>
 
         <Grid Grid.Column="0"
@@ -86,11 +84,7 @@
               Grid.ColumnSpan="3"
               Grid.Row="3"
               Grid.RowSpan="2">
-            
-              <!--<local:Graphic/>-->
-              <!--<localView:UserControlGraphic/>-->
-             
-              <!--<ContentControl Content="{Binding CurrentControl, UpdateSourceTrigger=PropertyChanged}" />-->
+
               <ContentControl Name="contentMain">
                   <localView:UserControlResults/>
               </ContentControl>
@@ -151,7 +145,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Left">
             
-            <!--Стак панель для будущих кнопок-->
+            <!-- панель для будущих кнопок-->
 
             <Button Name="ButtonGrid"
                     Content="Таблица"
@@ -176,9 +170,6 @@
                     BorderThickness="0" 
                     MouseEnter="ButtonGraphic_MouseEnter" 
                     MouseLeave="ButtonGraphic_MouseLeave" Click="ButtonGraphic_Click" >
-                <!--Command="{Binding ClickAdd}"-->
-
-
 
             </Button>
             

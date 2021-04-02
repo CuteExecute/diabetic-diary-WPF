@@ -1,107 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SweetControl_2._0
 {
-    /// <summary>
-    /// Логика взаимодействия для Graphic.xaml
-    /// </summary>
     public partial class Graphic : UserControl
     {
         public List<Point> PointList = new List<Point>();
-        GraphicPainter painter;
 
         public Graphic()
         {
             InitializeComponent();
-
-            //PointList.Add(new Point(0, 0));
-            //PointList.Add(new Point(1, 1));
-            //PointList.Add(new Point(2, 2));
-            //PointList.Add(new Point(3, 3));
-            //PointList.Add(new Point(4, 4));
-            //PointList.Add(new Point(5, 5));
-            //PointList.Add(new Point(6, 6));
-            //PointList.Add(new Point(7, 7));
-            //PointList.Add(new Point(8, 8));
-            //PointList.Add(new Point(9, 9));
-            //PointList.Add(new Point(10, 10));
-
-            //PointList.Add(new Point(0, 0));
-            //PointList.Add(new Point(1, 1));
-            //PointList.Add(new Point(2, 2));
-            //PointList.Add(new Point(3, 3));
-            //PointList.Add(new Point(4, 4));
-            //PointList.Add(new Point(5, 5));
-            //PointList.Add(new Point(6, 6));
-            //PointList.Add(new Point(7, 7));
-            //PointList.Add(new Point(8, 8));
-            //PointList.Add(new Point(9, 9));
-            //PointList.Add(new Point(10, 10));
-            //PointList.Add(new Point(11, 11));
-
-            PointList.Add(new Point(0, 15));       // ексепшен
-            PointList.Add(new Point(1, 4.5));     // пусто
-            PointList.Add(new Point(2, 8.9));
-            PointList.Add(new Point(3, 4.1));
-            PointList.Add(new Point(4, 6.2));
-            PointList.Add(new Point(5, 9));
-            PointList.Add(new Point(6, 13.2));
-            PointList.Add(new Point(7, 8.3));
-            //PointList.Add(new Point(8, 5));
-            //PointList.Add(new Point(9, 7.7));
-            //PointList.Add(new Point(10, 10));
-            //PointList.Add(new Point(11, 11.9));
-            //PointList.Add(new Point(12, 20.9));
-            //PointList.Add(new Point(13, 31.5));
-            //PointList.Add(new Point(14, 44));
-            //PointList.Add(new Point(15, 56.5));
-
-            //PointList.Add(new Point(6, 1));
-            //PointList.Add(new Point(12, 2));
-            //PointList.Add(new Point(8, 3));
-            //PointList.Add(new Point(16, 4));
-            //PointList.Add(new Point(4, 5));
-            //PointList.Add(new Point(10, 6));
-            //PointList.Add(new Point(17, 7));
-            //PointList.Add(new Point(2, 8));
-            //PointList.Add(new Point(5, 9));
-
-            //PointList.Add(new Point(0, 6));
-            //PointList.Add(new Point(1, 12));
-            //PointList.Add(new Point(2, 8));
-            //PointList.Add(new Point(3, 16));
-            //PointList.Add(new Point(4, 4));
-            //PointList.Add(new Point(5, 10));
-            //PointList.Add(new Point(6, 17));
-            //PointList.Add(new Point(7, 9));
-            //PointList.Add(new Point(8, 5));
-
-            painter = new GraphicPainter(GraphicCanvas, PointList);
-            painter.PaintGraphic();
-
-            JsonFileWorker myJson = new JsonFileWorker();
-
-            //myJson.RemoveFileLine("11.02.2021", "13:10", "1", "7.5");
-
-            //myJson.WriteToFile(10.9, 1);
-
-            //WrapperResult[] testRes = myJson.ReadingFromFile();
-            //MessageBox.Show($"{testRes[1].Resultation} - {testRes[1].Time}"); // OK B)
-
-            //MessageBox.Show($"{JsonFileWorker.json}\n{JsonFileWorker.restoreRes.Resultation}");
         }
 
         public class GraphicPainter
@@ -118,12 +29,11 @@ namespace SweetControl_2._0
             double scaleX { get; set; } 
             double scaleY { get; set; }
 
-            // ctor
+            // ctor - passing parameters
             public GraphicPainter(Canvas GraphicCanvas, List<Point> points)
             {
                 this.GraphicCanvas = GraphicCanvas;
 
-                // initializing arrays
                 arrayX = new double[points.Count];
                 arrayY = new double[points.Count];
 
@@ -133,10 +43,8 @@ namespace SweetControl_2._0
                     arrayY[i] = points[i].y;
                 }
 
-                // point list transmission
                 this.points = points;
 
-                // width and height transmission
                 this.width = GraphicCanvas.Width;
                 this.height = GraphicCanvas.Height;
             }
@@ -167,9 +75,9 @@ namespace SweetControl_2._0
 
                 for (int i = 0; i < points.Count; i++)
                 {
-                    draw.Add(new Line // Это розовая точка на графике 
+                    draw.Add(new Line // pink point on graph
                     {
-                        Stroke = new SolidColorBrush(Color.FromRgb(232, 80, 145)), // 193, 0, 32   rgb(232,80,145)  
+                        Stroke = new SolidColorBrush(Color.FromRgb(232, 80, 145)), 
                         StrokeThickness = 6,
                         X1 = points[i].x,
                         Y1 = points[i].y,
@@ -182,11 +90,11 @@ namespace SweetControl_2._0
 
                 for (int i = 0; i < points.Count; i++)
                 {
-                    if (i == points.Count - 1) // Что бы график не вылазил за пределы и не рисовался там где не нужно
+                    if (i == points.Count - 1) 
                     {
-                        GraphicCanvas.Children.Add(new Line  // Это линия графика между двумя точками
+                        GraphicCanvas.Children.Add(new Line  // closing line if there are no further points
                         {
-                            Stroke = new SolidColorBrush(Color.FromRgb(159, 144, 176)), // 193, 0, 32  
+                            Stroke = new SolidColorBrush(Color.FromRgb(159, 144, 176)),  
                             StrokeThickness = 4,
                             X1 = points[i].x,
                             Y1 = points[i].y,
@@ -198,9 +106,9 @@ namespace SweetControl_2._0
                     }
                     else
                     {
-                        GraphicCanvas.Children.Add(new Line  // Это линия графика между двумя точками
+                        GraphicCanvas.Children.Add(new Line  // line between two points
                         {
-                            Stroke = new SolidColorBrush(Color.FromRgb(159, 144, 176)), // 193, 0, 32  
+                            Stroke = new SolidColorBrush(Color.FromRgb(159, 144, 176)), 
                             StrokeThickness = 4,
                             X1 = points[i].x,
                             Y1 = points[i].y,

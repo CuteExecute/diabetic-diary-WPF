@@ -18,12 +18,9 @@ using System.Windows.Shapes;
 
 namespace SweetControl_2._0
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        // Singleton
+        // for use in other classes
         private static MainWindow instance;
         public static MainWindow getInstance()
         {
@@ -32,18 +29,15 @@ namespace SweetControl_2._0
             return instance;
         }
 
-        // Для замены контролов
+        // instance for replacing controls
         public static UserControlResults results = UserControlResults.getInstance();
         public static UserControlGraphic graphic = UserControlGraphic.getInstance();
-        //static UserControlGraphic graphic = new UserControlGraphic(); // фикс ошибки
-        //static UserControlGraphic graphic = new UserControlGraphic(ResultViewModel._PointList); // old
 
         static GraphicViewModel graphicViewModel = GraphicViewModel.getInstance();
         static ResultsViewModel resultsViewModel = ResultsViewModel.getInstance();
 
         public MainWindow()
         {
-            //instance = getInstance(); // Инициализируем экземпляр класса
             InitializeComponent();
 
             CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
@@ -52,13 +46,14 @@ namespace SweetControl_2._0
             ButtonGrid.Content = "Таблица ♡";
         }
 
+        // open UsuerControlResults
         public void openTable()
         {
-            //contentMain.Content = new UserControlResults();
             contentMain.Content = results;
         }
 
-        public void openGraphic() // Это открывает новый юзер контрол с графиком, добавить графику синглтон?
+        // open UserControlGraphic
+        public void openGraphic() 
         {
             contentMain.Content = graphic;
         }
@@ -67,8 +62,10 @@ namespace SweetControl_2._0
         {
             Application.Current.Shutdown();
         }
-        // выбранный элемент дополняется сердечком (Хотелось бы отметить что это тоже не самое лучшее решение, но я только осваиваюсь в WPF) <3
 
+        /// <summary>
+        /// Mechanism for changing the appearance of buttons switching
+        /// </summary>
         bool isGrid = true;
         private void ButtonGrid_Click(object sender, RoutedEventArgs e)
         {
@@ -114,6 +111,7 @@ namespace SweetControl_2._0
                 ButtonGraphic.Content = "График";
         }
 
+        // drag and drop top panel
         void layoutRoot_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
